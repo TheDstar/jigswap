@@ -1,0 +1,17 @@
+# Dossiers
+/node_modules/
+/dist/
+/build/
+
+# Fichiers
+.env
+.DS_Store
+*.log
+
+# Dépendances spécifiques à certains langages
+# Exemple pour Node.js
+# /public/uploads/
+
+# Fichiers de configuration spécifiques à certains IDE
+# Exemple pour Visual Studio Code
+.vscode/
