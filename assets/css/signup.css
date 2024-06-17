@@ -1,0 +1,18 @@
+@import url("styles.css");
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.signup-container .signup-container__top {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--jigswap-yellow);
+}
+@supports (-webkit-touch-callout: none) {
+  .signup-container .signup-container__top {
+    padding-top: 5vh;
+  }
+}/*# sourceMappingURL=signup.css.map */

@@ -1,81 +1,70 @@
 @import url('styles.css');
 
-.container {
-    height: 100vh;
-    width: 100vw;
+.startup-container {
     display: flex;
     flex-direction: column;
-    background-color: blue;
+    height: 100vh;
 
-    .header-container {
-        height: 60%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+    .startup-container__top {
+        height: 100vh;
 
         video {
-            height: auto;
+            height: 80vh;
             width: 100%;
-            object-fit: cover;
-            position: absolute;
-            z-index: -1;
-        }
-
-        .gradient-overlay {
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0), #242424);
+            object-fit: cover; // use "cover" to avoid distortion
             position: absolute;
             z-index: 0;
-            padding: 0 1rem;
-            display: flex;
-            justify-content: center;
+        }
 
-            .header-container__title {
-                color: white;
-                z-index: 1;
-                font-size: 2.5rem;
-                text-align: center;
-                font-weight: 700;
-                position: absolute;
-                bottom: 4rem;
-            }
-
-            .header-container__description {
-                color: white;
-                z-index: 1;
-                font-size: 1.25rem;
-                text-align: center;
-                font-weight: 400;
-                position: absolute;
-                bottom: 1rem;
-            }
+        .gradient-layout {
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            height: 50vh;
+            background: linear-gradient(180deg, rgba(36, 36, 36, 0) 0%, var(--jigswap-black) 60%);
         }
     }
 
-    .button-container {
-        height: 40%;
-        margin-top: 2vh;
-        position: absolute;
-        bottom: 0;
+    .startup-container__elements {
         width: 100%;
+        position: absolute;
+        z-index: 2;
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
-        gap: 1rem;
+        align-items: center;
+        bottom: 0;
+        gap: 2rem;
 
-        .button-container__btn {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-            background: var(--jigswap-yellow);
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .startup-container__buttons {
+            width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
+            gap: 1rem;
 
+            a {
+                padding: 1rem;
+                border-radius: 0.5rem;
+                text-decoration: none;
+                font-weight: 800;
+                font-size: 1.3rem;
+                
+                &.signup-button {
+                    background-color: var(--jigswap-yellow);
+                    color: var(--jigswap-black);
+                }
+
+                &.login-button {
+                    border: solid 1px var(--jigswap-yellow);
+                    color: var(--jigswap-yellow);
+                }
+            }
         }
     }
+
 }

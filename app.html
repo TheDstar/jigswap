@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5" >
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, viewport-fit=cover">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -9,24 +11,26 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="manifest" href="manifest.json">
+    <link href="assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="header-container">
-            <video autoplay muted playsinline loop>
+    <div class="startup-container">
+        <div class="startup-container__top">
+            <video muted autoplay playsinline loop>
                 <source src="assets/videos/jigswap-background2.mp4" type="video/mp4">
             </video>
-            <div class="gradient-overlay">
-                <h1 class="header-container__title">Bienvenue sur Jigswap</h1>
-                <p class="header-container__description">Prenez une photo et c'est parti.</p>
-            </div>
-        </div>
 
-        <div class="button-container">
-            <button class="button-container__btn">
-                <i class="fa fa-camera"></i>
-            </button>
-            <p>Prendre une photo</p>
+            <div class="gradient-layout"></div>
+
+            <div class="startup-container__elements">
+                <h1>Bienvenue sur Jigswap</h1>
+                <div class="startup-container__buttons">
+                    <a class="signup-button" href="signup.php">S'inscrire</a>
+                    <a class="login-button" href="login.php">Se connecter</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
