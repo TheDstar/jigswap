@@ -1,7 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+:root {
+  --jigswap-red: #A12B44;
+  --jigswap-blue: #0E5896;
+  --jigswap-yellow: #FDD642;
+  --jigswap-white: #f2f2f2;
+  --jigswap-black: #242424;
+}
+
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
-}/*# sourceMappingURL=styles.css.map */
+}
+
+body {
+  height: 100dvh;
+  background-color: var(--jigswap-white);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--jigswap-black);
+  }
+} /*# sourceMappingURL=styles.css.map */

@@ -2,12 +2,32 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Bienvenue sur Jigswap</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/app.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
+    <div class="container">
+        <div class="header-container">
+            <video autoplay muted playsinline loop>
+                <source src="assets/videos/jigswap-background2.mp4" type="video/mp4">
+            </video>
+            <div class="gradient-overlay">
+                <h1 class="header-container__title">Bienvenue sur Jigswap</h1>
+                <p class="header-container__description">Prenez une photo et c'est parti.</p>
+            </div>
+        </div>
 
+        <div class="button-container">
+            <button class="button-container__btn">
+                <i class="fa fa-camera"></i>
+            </button>
+            <p>Prendre une photo</p>
+        </div>
+    </div>
 </body>
 </html>
