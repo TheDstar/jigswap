@@ -1,4 +1,48 @@
 body {
-  padding: 4rem;
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
+}
+body .permission-group {
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body .permission-group .permission-icon {
+  font-size: 3rem;
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--jigswap-yellow);
+  color: var(--jigswap-black);
+  transition: box-shadow 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 0 8px 0 var(--jigswap-yellow);
+}
+body .permission-group .permission-title {
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+body .permission-group .permission-description {
+  font-size: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+body .permission-group .permission-button {
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: var(--jigswap-yellow);
+  color: var(--jigswap-black);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
 }/*# sourceMappingURL=permissions.css.map */

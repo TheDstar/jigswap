@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, viewport-fit=cover">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -19,9 +20,16 @@
 
 <body>
 
-<p>permissions</p>
+<h1>Permissions</h1>
 
-<p class="errorMessage"></p>
+<div class="permission-group">
+    <div class="permission-icon">
+        <i class="fa fa-camera permission-icon"></i>
+    </div>
+    <h2 class="permission-title">Accès à la caméra</h2>
+    <p class="permission-description">Pour utiliser Jigswap, vous devez autoriser l'accès à la caméra.</p>
+    <button class="permission-button" id="camera-permission-button">Autoriser l'accès à la caméra</button>
+</div>
 
 </body>
 
