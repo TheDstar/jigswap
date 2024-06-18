@@ -1,4 +1,5 @@
 const videoElement = document.getElementById('camera-video');
+const errorMessage = document.querySelector('#error-message');
 
 // Check if the browser supports media devices
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -9,7 +10,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             videoElement.srcObject = stream;
         })
         .catch((error) => {
-            console.error('Error accessing user media:', error);
+            errorMessage.innerHTML = error;
         });
 } else {
     console.error('getUserMedia is not supported in this browser.');
