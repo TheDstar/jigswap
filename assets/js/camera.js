@@ -7,39 +7,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const takePhotoButton = document.querySelector('#take-photo-button');
 
-    if(takePhotoButton) {
-        console.log('Button found');
-    }
-
     function divideImageIntoPuzzlePieces(imageData) {
         const puzzlePieces = [];
-        console.log('Image data received:', imageData);
         const img = new Image();
-        console.log('Image created');
-        const blob = dataURItoBlob(imageData);
-        console.log('Blob created');
-        const imageUrl = URL.createObjectURL(blob);
-        console.log('Image URL created');
-        img.src = imageUrl;
-        console.log('Image URL set');
         img.onload = () => {
             const pieceWidth = img.width / 4;
             const pieceHeight = img.height / 4;
-            console.log('Image loaded');
 
             for (let y = 0; y < 4; y++) {
                 for (let x = 0; x < 4; x++) {
                     const canvas = document.createElement('canvas');
-                    console.log('Canvas created');
                     canvas.width = pieceWidth;
                     canvas.height = pieceHeight;
-                    console.log('Canvas dimensions set');
                     const context = canvas.getContext('2d');
-                    console.log('Context created');
                     context.drawImage(img, x * pieceWidth, y * pieceHeight, pieceWidth, pieceHeight, 0, 0, pieceWidth, pieceHeight);
-                    console.log('Image drawn');
                     puzzlePieces.push(canvas.toDataURL('image/jpeg'));
-                    console.log('Puzzle piece added');
                 }
             }
 
@@ -53,6 +35,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Redirigez l'utilisateur vers la page puzzle.html
             window.location.href = 'puzzle.html';
         };
+        img.onerror = () => {
+            console.error('Une erreur est survenue lors du chargement de l\'image');
+        };
+
+        const blob = dataURItoBlob(imageData);
+        console.log(blob); // Vérifiez l'objet Blob
+        const imageUrl = URL.createObjectURL(blob);
+        console.log(imageUrl); // Vérifiez l'URL de l'image
+        img.src = imageUrl;
     }
 
     function dataURItoBlob(dataURI) {
@@ -67,18 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     takePhotoButton.addEventListener('click', () => {
-        console.log('Button clicked');
         const canvas = document.createElement('canvas');
-        console.log('Canvas created');
         canvas.width = videoElement.width;
         canvas.height = videoElement.height;
-        console.log('Canvas dimensions set');
         const context = canvas.getContext('2d');
-        console.log('Context created');
         context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-        console.log('Image drawn');
         const imageData = canvas.toDataURL('image/jpeg');
-        console.log('Image data created');
+        console.log(imageData); // Vérifiez les données imageData
 
         // Divisez l'image en plusieurs pièces de puzzle
         divideImageIntoPuzzlePieces(imageData);
