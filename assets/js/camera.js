@@ -5,12 +5,6 @@ window.onload = function() {
         return;
     }
     
-    const errorMessage = document.getElementById('error-message');
-    if (!errorMessage) {
-        console.error('Error message element not found');
-        return;
-    }
-    
     // ... (rest of the code)
 
 // Check if the browser supports media devices
