@@ -24,7 +24,8 @@ body {
 .puzzle-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-gap: 4px;
+  border-radius: 1rem;
   width: 400px;
   height: 400px;
   margin-bottom: 1rem;
@@ -49,7 +50,7 @@ body {
   width: 80px;
   height: 80px;
   background-color: #ddd;
-  border: 1px solid #000;
+  border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
