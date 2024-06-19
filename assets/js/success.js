@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (navigator.share) {
             navigator.share({
                 title: 'Jigswap',
-                text: `Je me suis jigswappé.e en ${elapsedTime}. Toi aussi, jigswappe-toi sur ce lien : jigswap.netlify.app`,
-                url: 'https://jigswap.netlify.app'
+                text: `Je me suis jigswappé.e en ${elapsedTime}. Toi aussi, jigswappe-toi sur ce lien : https://jigswap.netlify.app`
             }).then(() => {
                 console.log('Merci pour le partage!');
             }).catch(err => {
