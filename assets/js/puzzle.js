@@ -68,6 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 currentPiece.style.zIndex = '1';
             }
+            if (isPuzzleCompleted()) {
+                stopTimer();
+                window.location.href = 'success.html';
+            }
         }
         currentPiece = null;
     }
@@ -81,11 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 currentPiece.style.left = `${e.touches[0].clientX - currentX}px`;
                 currentPiece.style.top = `${e.touches[0].clientY - currentY}px`;
-            }
-
-            if (isPuzzleCompleted()) {
-                stopTimer();
-                window.location.href = 'success.html';
             }
         }
     }
