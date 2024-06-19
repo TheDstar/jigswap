@@ -4,6 +4,8 @@ window.onload = function() {
         console.error('Video element not found');
         return;
     }
+
+    const takePhotoButton = document.querySelector('#take-photo-button');
     
     // ... (rest of the code)
 
@@ -49,8 +51,6 @@ function divideImageIntoPuzzlePieces(imageData) {
         window.location.href = 'puzzle.html';
     };
 }
-
-const takePhotoButton = document.querySelector('#take-photo-button');
 
 takePhotoButton.addEventListener('click', () => {
     const canvas = document.createElement('canvas');
