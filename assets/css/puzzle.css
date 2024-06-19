@@ -46,6 +46,7 @@ body {
   display: flex;
   gap: 10px;
   overflow-x: auto;
+  padding-left: 1rem;
 }
 
 .puzzle-piece-container {
@@ -57,7 +58,6 @@ body {
   justify-content: center;
   align-items: center;
   cursor: move;
-  padding-left: 1rem;
 }
 
 .puzzle-piece-image {
