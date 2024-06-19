@@ -10,7 +10,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             videoElement.srcObject = stream;
         })
         .catch((error) => {
-            errorMessage.innerText = error;
+            console.error('Error accessing media devices.', error);
         });
 } else {
     console.error('getUserMedia is not supported in this browser.');
