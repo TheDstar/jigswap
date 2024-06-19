@@ -25,6 +25,8 @@ body {
 
 .puzzle-grid {
   display: grid;
+  position: absolute;
+  top: 8rem;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 4px;
   border-radius: 1rem;
