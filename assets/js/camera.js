@@ -1,4 +1,4 @@
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', function() {
     const videoElement = document.getElementById('camera-video');
     if (!videoElement) {
         console.error('Video element not found');
@@ -33,7 +33,7 @@ window.onload = function() {
             window.location.href = 'puzzle.html';
         };
     }
-    
+
     takePhotoButton.addEventListener('click', () => {
         const canvas = document.createElement('canvas');
         canvas.width = videoElement.width;
@@ -60,4 +60,4 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 } else {
     console.error('getUserMedia is not supported in this browser.');
 }
-};
+});
