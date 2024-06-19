@@ -12,9 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
     let startTime;
     let piecesPlaced = 0;
 
-    function createPuzzlePieceContainer(src) {
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    function createPuzzlePieceContainer(src, index) {
         const container = document.createElement('div');
         container.classList.add('puzzle-piece-container');
+        container.id = `piece-container-${index}`;
         const img = document.createElement('img');
         img.src = src;
         img.classList.add('puzzle-piece-image');
@@ -29,9 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
         puzzleContainer.appendChild(piece);
     }
 
+    shuffleArray(puzzlePieces); // Mélanger les pièces au début
+
     puzzlePieces.forEach((piece, index) => {
-        const pieceContainer = createPuzzlePieceContainer(piece);
-        pieceContainer.id = `piece-container-${index}`; // Ajouter un ID unique à chaque conteneur de pièce
+        const pieceContainer = createPuzzlePieceContainer(piece, index);
         piecesContainer.appendChild(pieceContainer);
 
         pieceContainer.addEventListener('touchstart', dragStart, { passive: true });
@@ -81,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Vérifier si toutes les pièces sont placées
             if (piecesPlaced === 16) {
                 stopTimer();
+                saveTimeToLocalStorage();
                 window.location.href = 'success.html';
             }
         }
@@ -142,6 +152,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function stopTimer() {
         clearInterval(timerInterval);
+    }
+
+    function saveTimeToLocalStorage() {
+        const currentTime = new Date().getTime();
+        const elapsedTime = currentTime - startTime;
+        localStorage.setItem('puzzleCompletionTime', elapsedTime);
     }
 
     startTimer();
