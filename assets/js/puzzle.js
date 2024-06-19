@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Vérifier si toutes les pièces sont placées
             if (piecesPlaced === 16) {
-                localStorage.setItem("timer", timerElement.textContent);
+                localStorage.setItem("timer", timerElement.innerText);
                 stopTimer();
                 window.location.href = 'success.html';
             }
