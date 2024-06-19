@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Pièces du puzzle enregistrées :', JSON.parse(localStorage.getItem('puzzlePieces')));
 
             // Redirigez l'utilisateur vers la page puzzle.html
-            window.location.href = '../puzzle.html';
+            window.location.href = 'puzzle.html';
         };
     }
 
