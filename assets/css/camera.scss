@@ -2,7 +2,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
 
     h2 {
         color: white;
@@ -17,5 +19,15 @@ body {
         border-radius: 1rem;
         -webkit-transform: scaleX(-1);
         transform: scaleX(-1);
+    }
+
+    button {
+        padding: 1rem;
+        background-color: var(--jigswap-yellow);
+        color: var(--jigswap-black);
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: 700;
     }
 }

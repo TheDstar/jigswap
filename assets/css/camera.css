@@ -2,7 +2,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
 }
 body h2 {
   color: white;
@@ -15,4 +17,13 @@ body video {
   height: auto;
   border-radius: 1rem;
   transform: scaleX(-1);
+}
+body button {
+  padding: 1rem;
+  background-color: var(--jigswap-yellow);
+  color: var(--jigswap-black);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
 }/*# sourceMappingURL=camera.css.map */
