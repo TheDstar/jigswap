@@ -1,5 +1,17 @@
-const videoElement = document.getElementById('camera-video');
-const errorMessage = document.getElementById('error-message');
+window.onload = function() {
+    const videoElement = document.getElementById('camera-video');
+    if (!videoElement) {
+        console.error('Video element not found');
+        return;
+    }
+    
+    const errorMessage = document.getElementById('error-message');
+    if (!errorMessage) {
+        console.error('Error message element not found');
+        return;
+    }
+    
+    // ... (rest of the code)
 
 // Check if the browser supports media devices
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -15,3 +27,4 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 } else {
     console.error('getUserMedia is not supported in this browser.');
 }
+};
