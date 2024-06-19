@@ -13,15 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
         img.onload = () => {
             const pieceWidth = img.width / 4;
             const pieceHeight = img.height / 4;
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = pieceWidth;
+            tempCanvas.height = pieceHeight;
+            const tempContext = tempCanvas.getContext('2d');
 
             for (let y = 0; y < 4; y++) {
                 for (let x = 0; x < 4; x++) {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = pieceWidth;
-                    canvas.height = pieceHeight;
-                    const context = canvas.getContext('2d');
-                    context.drawImage(img, x * pieceWidth, y * pieceHeight, pieceWidth, pieceHeight, 0, 0, pieceWidth, pieceHeight);
-                    puzzlePieces.push(canvas.toDataURL('image/jpeg'));
+                    tempContext.clearRect(0, 0, pieceWidth, pieceHeight);
+                    tempContext.drawImage(img, x * pieceWidth, y * pieceHeight, pieceWidth, pieceHeight, 0, 0, pieceWidth, pieceHeight);
+                    puzzlePieces.push(tempCanvas.toDataURL('image/jpeg'));
                 }
             }
 
@@ -39,28 +40,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Une erreur est survenue lors du chargement de l\'image');
         };
 
-        const blob = dataURItoBlob(imageData);
-        console.log(blob); // Vérifiez l'objet Blob
-        const imageUrl = URL.createObjectURL(blob);
-        console.log(imageUrl); // Vérifiez l'URL de l'image
-        img.src = imageUrl;
-    }
-
-    function dataURItoBlob(dataURI) {
-        const byteString = atob(dataURI.split(',')[1]);
-        const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-        const ab = new ArrayBuffer(byteString.length);
-        const ia = new Uint8Array(ab);
-        for (let i = 0; i < byteString.length; i++) {
-            ia[i] = byteString.charCodeAt(i);
-        }
-        return new Blob([ab], { type: mimeString });
+        img.src = imageData; // Utilisez directement les données de l'image ici
     }
 
     takePhotoButton.addEventListener('click', () => {
         const canvas = document.createElement('canvas');
-        canvas.width = videoElement.width;
-        canvas.height = videoElement.height;
+        canvas.width = videoElement.videoWidth; // Utilisez videoWidth au lieu de width
+        canvas.height = videoElement.videoHeight; // Utilisez videoHeight au lieu de height
         const context = canvas.getContext('2d');
         context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
         const imageData = canvas.toDataURL('image/jpeg');
