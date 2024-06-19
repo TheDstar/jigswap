@@ -68,9 +68,12 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 currentPiece.style.zIndex = '1';
             }
-            if (isPuzzleCompleted()) {
-                stopTimer();
-                window.location.href = 'success.html';
+            // Vérifier si le clic était sur une pièce avant de vérifier si le puzzle est complété
+            if (e.target.tagName === 'IMG') {
+                if (isPuzzleCompleted()) {
+                    stopTimer();
+                    window.location.href = 'success.html';
+                }
             }
         }
         currentPiece = null;
@@ -101,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const actualTop = pieceRect.top - containerRect.top;
 
         return (
-            Math.abs(actualLeft - expectedLeft) < 10 && // Allow some tolerance
-            Math.abs(actualTop - expectedTop) < 10
+            Math.abs(actualLeft - expectedLeft) < 20 && // Augmenter la tolérance
+            Math.abs(actualTop - expectedTop) < 20
         );
     }
 
