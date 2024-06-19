@@ -1,0 +1,424 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+:root {
+  --color1: #0e5896;
+  --color2: #a12b44;
+  --text-color: #242424;
+  --btn-text-color: white;
+  --btn-text-color-inverted: #0e5896;
+  --gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgb(255, 255, 255) 70%
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+/* navigation */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: var(--btn-text-color);
+  position: fixed;
+  width: 100%;
+  z-index: 99999999;
+}
+.nav_name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color2);
+  text-decoration: none;
+}
+nav div {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav div a {
+  text-decoration: none;
+  color: black;
+}
+.pwa_button {
+  padding: 0.5rem;
+  border-radius: 30px;
+  background-color: var(--color2);
+  color: var(--btn-text-color);
+}
+
+/* section hero */
+
+.hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero div {
+  text-align: center;
+}
+.slogan {
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+.slogan p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.slogan_description {
+  width: 30vw;
+  margin-bottom: 3rem;
+}
+.container_hero {
+  z-index: 999;
+  position: absolute;
+  top: 20%;
+}
+.hero_background {
+  width: 50vw;
+  height: fit-content;
+}
+.hero_pic1,
+.hero_pic2 {
+  width: 20vw;
+}
+.hero_pic1 {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+}
+.hero_pic2 {
+  position: absolute;
+  top: 40%;
+  right: 10%;
+}
+
+/* section description */
+
+.first_description,
+.sec_description {
+  display: flex;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+}
+.first_description {
+  width: 70%;
+  margin-top: 15rem;
+  margin-bottom: 6rem;
+}
+.sec_description {
+  margin-top: 12rem;
+}
+.third_description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 25vh;
+  margin-top: 12rem;
+  margin-bottom: 5rem;
+}
+.third_description button {
+  margin-top: 2rem;
+}
+.third_description p {
+  text-align: center;
+}
+.mockup1 {
+  width: 20vw;
+}
+.mockup1,
+.mockup2 {
+  height: fit-content;
+}
+.mockup2 {
+  width: 16vw;
+  margin-right: 7rem;
+  margin-left: 10rem;
+}
+.text_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text_container_p p {
+  text-align: justify;
+}
+.first_paragraph {
+  width: 70%;
+}
+.text_container_p h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  width: 70%;
+}
+
+/* Media query for screens with a max width of 1200px */
+@media (max-width: 1200px) {
+  .hero_background {
+    width: 60vw;
+    margin-top: 5rem;
+  }
+  .slogan p {
+    font-size: 1.75rem;
+  }
+  .slogan_description {
+    width: 40vw;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 25vw;
+  }
+  .first_description,
+  .sec_description {
+    width: 80%;
+  }
+  .mockup1 {
+    width: 30vw;
+  }
+  .mockup2 {
+    width: 25vw;
+    margin: 2rem 5rem;
+  }
+}
+
+/* Media query for screens with a max width of 992px */
+@media (max-width: 992px) {
+  .hero_background {
+    width: 70vw;
+    margin-top: 6rem;
+  }
+  .slogan p {
+    font-size: 1.5rem;
+  }
+  .slogan_description {
+    width: 50vw;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 30vw;
+  }
+  .hero_pic1 {
+    left: 0;
+  }
+  .hero_pic2 {
+    right: 0;
+  }
+  nav div {
+    width: 40vw;
+  }
+  .first_description,
+  .sec_description {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mockup1,
+  .mockup2 {
+    width: 30vw;
+  }
+}
+
+/* Media query for screens with a max width of 768px */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav div {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .nav_button {
+    display: none;
+  }
+  .first_a {
+    display: none;
+  }
+  .hero_background {
+    width: 80vw;
+    margin-top: 5rem;
+  }
+  .slogan p {
+    font-size: 1.25rem;
+  }
+  .slogan_description {
+    width: 60vw;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 25vw;
+  }
+  .first_description,
+  .sec_description {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .first_description .text_container_p {
+    padding-left: 2.5rem;
+  }
+  .sec_description .text_container_p {
+    padding-right: 2.5rem;
+  }
+  .mockup1,
+  .mockup2 {
+    width: 30vw;
+  }
+  .mockup1 {
+    padding-right: 2rem;
+  }
+}
+
+/* Media query for screens with a max width of 576px */
+@media (max-width: 576px) {
+  nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav div {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .nav_button {
+    display: none;
+  }
+  .container_hero {
+    top: 12%;
+  }
+  .first_a {
+    display: none;
+  }
+  .hero_background {
+    width: 80vw;
+    margin-top: 6rem;
+  }
+  .slogan p {
+    font-size: 1.25rem;
+  }
+  .slogan_description {
+    width: 60vw;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 25vw;
+  }
+  .first_description,
+  .sec_description {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sec_description .text_container_p {
+    padding-left: 2.5rem;
+    padding-right: 0;
+  }
+  .text_container_p p {
+    width: 90%;
+    font-size: 0.7rem;
+  }
+  .mockup1,
+  .mockup2 {
+    width: 40vw;
+  }
+  .mockup1 {
+    margin-top: 2rem;
+  }
+  .text_container {
+    flex-direction: column;
+    align-self: start;
+  }
+  .text_container_p h1 {
+    font-size: 1.5rem;
+  }
+  .third_description p {
+    font-size: 0.9rem;
+  }
+  .third_description {
+    margin-top: 4rem;
+    padding: 2rem;
+  }
+}
+
+/* Media query for screens with a max width of 412px */
+@media (max-width: 412px) {
+  nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav div {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .nav_button {
+    display: none;
+  }
+  .container_hero {
+    top: 10%;
+    text-align: center;
+  }
+  .first_a {
+    display: none;
+  }
+  .slogan p {
+    font-size: 1rem;
+  }
+  .slogan_description {
+    font-size: 0.6rem;
+  }
+  .hero_background {
+    width: 90%;
+    margin-top: 6rem;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 26vw;
+  }
+
+  .first_description,
+  .sec_description {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .first_description {
+    margin-bottom: 4rem;
+  }
+  .sec_description {
+    margin-top: 4rem;
+  }
+  .mockup1,
+  .mockup2 {
+    width: 30vw;
+    padding-right: 0;
+  }
+  .third_description {
+    height: auto;
+    margin-top: 5rem;
+  }
+  .third_description h1 {
+    font-size: 1.2rem;
+  }
+  .text_container_p h1 {
+    font-size: 1.5rem;
+  }
+  .text_container_p p {
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,391 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+:root {
+  --color1: #0e5896;
+  --color2: #a12b44;
+  --text-color: #242424;
+  --btn-text-color: white;
+  --btn-text-color-inverted: #0e5896;
+  --gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgb(255, 255, 255) 70%
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+/* navigation */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: var(--btn-text-color);
+  position: fixed;
+  width: 100%;
+  z-index: 99999999;
+}
+.nav_name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color2);
+  text-decoration: none;
+}
+nav div {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav div a {
+  text-decoration: none;
+  color: black;
+}
+.pwa_button {
+  padding: 0.5rem;
+  border-radius: 30px;
+  background-color: var(--color2);
+  color: var(--btn-text-color);
+}
+
+/* section hero */
+
+.hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero div {
+  text-align: center;
+}
+.slogan {
+  text-align: center;
+  margin-top: 8rem;
+  margin-bottom: 2rem;
+}
+.slogan p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.slogan_description {
+  width: 30vw;
+  margin-bottom: 3rem;
+}
+.container_hero {
+  z-index: 999;
+  position: absolute;
+  top: 20%;
+}
+.hero_background {
+  width: 70vw;
+  height: fit-content;
+}
+.hero_pic1,
+.hero_pic2 {
+  width: 20vw;
+}
+.hero_pic1 {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+}
+.hero_pic2 {
+  position: absolute;
+  top: 40%;
+  right: 10%;
+}
+
+/* section description */
+
+.first_description,
+.sec_description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+}
+.first_description {
+  width: 70%;
+  margin-top: 15rem;
+  margin-bottom: 6rem;
+}
+.sec_description {
+  margin-top: 12rem;
+}
+.third_description {
+  margin-top: 12rem;
+  margin-bottom: 10rem;
+}
+.third_description h1 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.mockup3 {
+  width: 18vw;
+}
+.mockup3,
+.mockup2 {
+  height: fit-content;
+}
+.mockup2 {
+  width: 16vw;
+  margin-right: 7rem;
+  margin-left: 10rem;
+}
+.text_container,
+.sec_text_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text_container_p {
+  display: flex;
+}
+.text_container_p p {
+  width: 70%;
+  text-align: justify;
+}
+.text_container h1,
+.sec_text_container h1 {
+  margin-bottom: 4rem;
+  font-size: 2rem;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+.sec_text_container div {
+  width: 40vw;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.sec_text_container div h2 {
+  margin-bottom: 0.5rem;
+}
+.stat,
+.profil {
+  width: 16vw;
+  height: fit-content;
+  margin-bottom: 2rem;
+}
+.third_container {
+  display: flex;
+  justify-content: space-around;
+}
+.third_container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.third_container div p {
+  width: 30vw;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Media query for screens with a max width of 1200px */
+@media (max-width: 1200px) {
+  .hero_background {
+    width: 60vw;
+    margin-top: 5rem;
+  }
+  .slogan p {
+    font-size: 1.75rem;
+  }
+  .slogan_description {
+    width: 40vw;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 25vw;
+  }
+}
+
+/* Media query for screens with a max width of 992px */
+@media (max-width: 992px) {
+  .hero_background {
+    width: 70vw;
+    margin-top: 6rem;
+  }
+  .slogan p {
+    font-size: 1.5rem;
+  }
+  .slogan_description {
+    width: 50vw;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 30vw;
+  }
+  .hero_pic1 {
+    left: 0;
+  }
+  .hero_pic2 {
+    right: 0;
+  }
+  nav div {
+    width: 40vw;
+  }
+}
+
+/* Media query for screens with a max width of 768px */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav div {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .first_a,
+  .sec_a {
+    display: none;
+  }
+  .hero_background {
+    width: 80vw;
+    margin-top: 5rem;
+  }
+  .slogan p {
+    font-size: 1.25rem;
+  }
+  .slogan_description {
+    width: 60vw;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 25vw;
+  }
+  .text_container_p {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mockup3 {
+    width: 35vw;
+    margin-top: 3rem;
+  }
+  .text_container h1 {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .text_container {
+    width: 100%;
+  }
+  .text {
+    width: 80vw;
+    align-items: center;
+  }
+  .text h2 {
+    margin-bottom: 1rem;
+  }
+  .first_description {
+    width: 100%;
+  }
+  .sec_text_container div {
+    width: 70vw;
+  }
+  .third_container {
+    flex-direction: column;
+  }
+  .third_description h1 {
+    margin-bottom: 0;
+    padding: 1rem;
+  }
+  .stat,
+  .profil {
+    margin-top: 3rem;
+  }
+  .third_container div p {
+    width: 60vw;
+  }
+  .sec_text_container h1 {
+    padding: 1rem;
+    text-align: center;
+  }
+}
+
+/* Media query for screens with a max width of 576px */
+@media (max-width: 576px) {
+  nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav div {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .container_hero {
+    top: 12%;
+  }
+  .first_a,
+  .sec_a {
+    display: none;
+  }
+  .hero_background {
+    width: 80vw;
+    margin-top: 6rem;
+  }
+  .slogan p {
+    font-size: 1.25rem;
+  }
+  .slogan_description {
+    width: 60vw;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 25vw;
+  }
+  .text {
+    align-items: center;
+  }
+}
+
+/* Media query for screens with a max width of 412px */
+@media (max-width: 412px) {
+  nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav div {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .container_hero {
+    top: 10%;
+    text-align: center;
+  }
+  .first_a,
+  .sec_a {
+    display: none;
+  }
+  .slogan p {
+    font-size: 1rem;
+  }
+  .slogan_description {
+    font-size: 0.6rem;
+  }
+  .hero_background {
+    width: 90%;
+    margin-top: 6rem;
+  }
+  .hero_pic1,
+  .hero_pic2 {
+    width: 26vw;
+  }
+}
