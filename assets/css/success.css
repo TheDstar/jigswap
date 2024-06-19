@@ -6,6 +6,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
 }
 body .container {
@@ -17,7 +18,7 @@ body .container {
   width: 100vw;
   overflow: none;
 }
-body .share-button {
+body .container .share-button {
   background-color: var(--jigswap-yellow);
   color: var(--jigswap-gray);
   padding: 0.5rem 1rem;

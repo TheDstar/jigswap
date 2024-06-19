@@ -6,6 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
 
     .container {
@@ -16,14 +17,14 @@ body {
         height: 100vh;
         width: 100vw;
         overflow: none;
-    }
 
-    .share-button {
-        background-color: var(--jigswap-yellow);
-        color: var(--jigswap-gray);
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        text-decoration: none;
-        margin-top: 1rem;
+        .share-button {
+            background-color: var(--jigswap-yellow);
+            color: var(--jigswap-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
     }
 }
