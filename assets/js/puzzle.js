@@ -62,7 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function dragEnd(e) {
         isDragging = false;
         if (currentPiece) {
-            currentPiece.style.zIndex = '1';
+            if (isPieceInPlace(currentPiece)) {
+                currentPiece.style.zIndex = '1';
+                currentPiece.style.pointerEvents = 'none';
+            } else {
+                currentPiece.style.zIndex = '1';
+            }
         }
         currentPiece = null;
     }
@@ -85,25 +90,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function isPieceInPlace(piece) {
+        const pieceIndex = Array.from(puzzleContainer.children).indexOf(piece);
+        const expectedLeft = (pieceIndex % 4) * (puzzleContainer.offsetWidth / 4);
+        const expectedTop = Math.floor(pieceIndex / 4) * (puzzleContainer.offsetHeight / 4);
+
+        const pieceRect = piece.getBoundingClientRect();
+        const containerRect = puzzleContainer.getBoundingClientRect();
+
+        const actualLeft = pieceRect.left - containerRect.left;
+        const actualTop = pieceRect.top - containerRect.top;
+
+        return (
+            Math.abs(actualLeft - expectedLeft) < 10 && // Allow some tolerance
+            Math.abs(actualTop - expectedTop) < 10
+        );
+    }
+
     function isPuzzleCompleted() {
         const puzzlePieces = Array.from(puzzleContainer.children);
-        const sortedPieces = puzzlePieces.slice().sort((a, b) => {
-            return a.style.left.split('px')[0] - b.style.left.split('px')[0];
-        });
-
-        for (let i = 0; i < sortedPieces.length; i++) {
-            const piece = sortedPieces[i];
-            const expectedLeft = (i % 4) * (puzzleContainer.offsetWidth / 4);
-            const expectedTop = Math.floor(i / 4) * (puzzleContainer.offsetHeight / 4);
-
-            if (
-                parseInt(piece.style.left.split('px')[0], 10) !== expectedLeft ||
-                parseInt(piece.style.top.split('px')[0], 10) !== expectedTop
-            ) {
+        for (let i = 0; i < puzzlePieces.length; i++) {
+            if (!isPieceInPlace(puzzlePieces[i])) {
                 return false;
             }
         }
-
         return true;
     }
 
