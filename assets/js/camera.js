@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('puzzlePieces', JSON.stringify(puzzlePieces));
     
             // Redirigez l'utilisateur vers la page puzzle.html
-            window.location.href = 'puzzle.html';
+            window.location.href = '../puzzle.html';
         };
     }
 
