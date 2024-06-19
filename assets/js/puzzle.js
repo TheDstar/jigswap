@@ -25,11 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let i = 0; i < 16; i++) {
         const piece = document.createElement('div');
         piece.classList.add('puzzle-piece');
+        piece.id = `piece-${i}`; // Ajouter un ID unique à chaque pièce
         puzzleContainer.appendChild(piece);
     }
 
-    puzzlePieces.forEach(piece => {
+    puzzlePieces.forEach((piece, index) => {
         const pieceContainer = createPuzzlePieceContainer(piece);
+        pieceContainer.id = `piece-container-${index}`; // Ajouter un ID unique à chaque conteneur de pièce
         piecesContainer.appendChild(pieceContainer);
 
         pieceContainer.addEventListener('touchstart', dragStart, { passive: true });
@@ -63,13 +65,19 @@ document.addEventListener('DOMContentLoaded', function() {
     function dragEnd(e) {
         isDragging = false;
         if (currentPiece) {
-            if (isPieceInPlace(currentPiece)) {
+            const pieceIndex = parseInt(currentPiece.id.split('-')[2]); // Récupérer l'index de la pièce depuis son ID
+            const expectedSlotId = `piece-${pieceIndex}`; // ID de la case attendue pour cette pièce
+            const expectedSlot = puzzleContainer.querySelector(`#${expectedSlotId}`); // Sélectionner la case attendue
+
+            if (isElementInSlot(currentPiece, expectedSlot)) {
                 currentPiece.style.zIndex = '1';
                 currentPiece.style.pointerEvents = 'none';
+                centerPieceInSlot(currentPiece, expectedSlot);
                 piecesPlaced++; // Incrémenter piecesPlaced si la pièce est bien placée
             } else {
                 currentPiece.style.zIndex = '1';
             }
+
             // Vérifier si toutes les pièces sont placées
             if (piecesPlaced === 16) {
                 stopTimer();
@@ -92,31 +100,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function isPieceInPlace(piece) {
-        const pieceIndex = Array.from(puzzleContainer.children).indexOf(piece);
-        const expectedLeft = (pieceIndex % 4) * (puzzleContainer.offsetWidth / 4);
-        const expectedTop = Math.floor(pieceIndex / 4) * (puzzleContainer.offsetHeight / 4);
-
-        const pieceRect = piece.getBoundingClientRect();
-        const containerRect = puzzleContainer.getBoundingClientRect();
-
-        const actualLeft = pieceRect.left - containerRect.left;
-        const actualTop = pieceRect.top - containerRect.top;
+    function isElementInSlot(element, slot) {
+        const elementRect = element.getBoundingClientRect();
+        const slotRect = slot.getBoundingClientRect();
 
         return (
-            Math.abs(actualLeft - expectedLeft) < 20 && // Augmenter la tolérance
-            Math.abs(actualTop - expectedTop) < 20
+            elementRect.left >= slotRect.left &&
+            elementRect.right <= slotRect.right &&
+            elementRect.top >= slotRect.top &&
+            elementRect.bottom <= slotRect.bottom
         );
     }
 
-    function isPuzzleCompleted() {
-        const puzzlePieces = Array.from(puzzleContainer.children);
-        for (let i = 0; i < puzzlePieces.length; i++) {
-            if (!isPieceInPlace(puzzlePieces[i])) {
-                return false;
-            }
-        }
-        return true;
+    function centerPieceInSlot(piece, slot) {
+        const slotRect = slot.getBoundingClientRect();
+        const pieceRect = piece.getBoundingClientRect();
+
+        const centerX = slotRect.left + slotRect.width / 2 - pieceRect.width / 2;
+        const centerY = slotRect.top + slotRect.height / 2 - pieceRect.height / 2;
+
+        piece.style.left = `${centerX}px`;
+        piece.style.top = `${centerY}px`;
     }
 
     function startTimer() {
