@@ -40,18 +40,24 @@ puzzlePieces.forEach(piece => {
     pieceContainer.addEventListener('touchstart', dragStart, { passive: true });
     pieceContainer.addEventListener('touchend', dragEnd);
     pieceContainer.addEventListener('touchmove', drag, { passive: true });
-});
 
-let isDragging = false;
-let currentPiece = null;
-let currentX;
-let currentY;
+    pieceContainer.addEventListener('mousedown', dragStart);
+    pieceContainer.addEventListener('mouseup', dragEnd);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseleave', dragEnd); // Ajoutez cet événement pour gérer le cas où la souris quitte la fenêtre
+});
 
 function dragStart(e) {
     isDragging = true;
     currentPiece = e.target.parentNode;
-    currentX = e.touches[0].clientX - currentPiece.offsetLeft;
-    currentY = e.touches[0].clientY - currentPiece.offsetTop;
+
+    if (e.type === 'mousedown') {
+        currentX = e.clientX - currentPiece.offsetLeft;
+        currentY = e.clientY - currentPiece.offsetTop;
+    } else {
+        currentX = e.touches[0].clientX - currentPiece.offsetLeft;
+        currentY = e.touches[0].clientY - currentPiece.offsetTop;
+    }
 }
 
 function dragEnd(e) {
@@ -63,8 +69,14 @@ function drag(e) {
     if (isDragging && currentPiece) {
         e.preventDefault();
         currentPiece.style.position = 'absolute';
-        currentPiece.style.left = `${e.touches[0].clientX - currentX}px`;
-        currentPiece.style.top = `${e.touches[0].clientY - currentY}px`;
+
+        if (e.type === 'mousemove') {
+            currentPiece.style.left = `${e.clientX - currentX}px`;
+            currentPiece.style.top = `${e.clientY - currentY}px`;
+        } else {
+            currentPiece.style.left = `${e.touches[0].clientX - currentX}px`;
+            currentPiece.style.top = `${e.touches[0].clientY - currentY}px`;
+        }
 
         if (isPuzzleCompleted()) {
             stopTimer();
