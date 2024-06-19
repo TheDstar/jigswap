@@ -44,8 +44,8 @@ body {
 
 .pieces-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  overflow-x: auto;
   padding-left: 1rem;
 }
 
