@@ -41,6 +41,7 @@ body {
 .pieces-container {
     display: flex;
     gap: 10px;
+    pointer-events: none;
 }
 
 .puzzle-piece-container {
@@ -54,11 +55,8 @@ body {
     overflow-x: scroll;
 
     .puzzle-piece-image {
+        max-width: 100%;
+        max-height: 100%;
         pointer-events: none;
     }
-}
-
-.puzzle-piece-image {
-    max-width: 100%;
-    max-height: 100%;
 }
