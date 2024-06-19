@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentY;
     let timerInterval;
     let startTime;
+    let piecesPlaced = 0;
 
     function createPuzzlePieceContainer(src) {
         const container = document.createElement('div');
@@ -65,15 +66,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isPieceInPlace(currentPiece)) {
                 currentPiece.style.zIndex = '1';
                 currentPiece.style.pointerEvents = 'none';
+                piecesPlaced++; // Incrémenter piecesPlaced si la pièce est bien placée
             } else {
                 currentPiece.style.zIndex = '1';
             }
-            // Vérifier si le clic était sur une pièce avant de vérifier si le puzzle est complété
-            if (e.target.tagName === 'IMG') {
-                if (isPuzzleCompleted()) {
-                    stopTimer();
-                    window.location.href = 'success.html';
-                }
+            // Vérifier si toutes les pièces sont placées
+            if (piecesPlaced === 16) {
+                stopTimer();
+                window.location.href = 'success.html';
             }
         }
         currentPiece = null;
