@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
+            console.log('test réussi');
+
             // Enregistrez les pièces de puzzle dans le stockage local ou envoyez-les au serveur
             localStorage.setItem('puzzlePieces', JSON.stringify(puzzlePieces));
 
