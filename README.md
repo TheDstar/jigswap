@@ -1,13 +1,9 @@
 # Fiche explicative de Jigswap
 
-## Nom du projet
-Jigswap
-
-## Origine du nom
-Le nom "Jigswap" est une combinaison de deux mots anglais : "Jigsaw" (puzzle) et "swap" (échanger). Ce nom reflète bien l'essence ludique et interactive de l'application.
-
 ## Description
 Jigswap est une application ludique sous forme de PWA. Le concept est simple : les utilisateurs peuvent créer et résoudre des puzzles à partir de leurs propres photos. 
+
+Le nom "Jigswap" est une combinaison de deux mots anglais : "Jigsaw" (puzzle) et "swap" (échanger). Ce nom reflète bien l'essence ludique et interactive de l'application.
 
 ## Fonctionnalités principales
 **Prise de photo :**
@@ -30,16 +26,13 @@ Un historique est présent sur l'écran d'accueil pour que l'utilisateur garde u
 ### Caméra
 Utilisée pour prendre des photos lorsque l'utilisateur se prend en photo.
 
-### Notifications Push
-
-Rappellent à l'utilisateur de venir jouer une fois par jour.
 ### Touch Gesture
 Permet à l'utilisateur de reconstituer le puzzle en manipulant les morceaux avec ses doigts.
 
 ### Permissions
 Demandent l'autorisation d'utiliser la caméra de l'utilisateur.
 
-### Partage de Données
+### Partage de données
 Permet à l'utilisateur de partager son score et sa photo sur d'autres applications.
 
 
