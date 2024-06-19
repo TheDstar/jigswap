@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const takePhotoButton = document.querySelector('#take-photo-button');
-
+    
     function divideImageIntoPuzzlePieces(imageData) {
         const puzzlePieces = [];
         const img = new Image();
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         img.onload = () => {
             const pieceWidth = img.width / 4;
             const pieceHeight = img.height / 4;
-
+    
             for (let y = 0; y < 4; y++) {
                 for (let x = 0; x < 4; x++) {
                     const canvas = document.createElement('canvas');
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             console.log('test réussi');
-
+    
             // Enregistrez les pièces de puzzle dans le stockage local ou envoyez-les au serveur
             localStorage.setItem('puzzlePieces', JSON.stringify(puzzlePieces));
 
@@ -39,24 +39,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     takePhotoButton.addEventListener('click', () => {
-        // Demander l'autorisation d'accès à la caméra
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
-            .then((stream) => {
-                // Set the video element's source to the user's media stream
-                videoElement.srcObject = stream;
-
-                const canvas = document.createElement('canvas');
-                canvas.width = videoElement.width;
-                canvas.height = videoElement.height;
-                const context = canvas.getContext('2d');
-                context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-                const imageData = canvas.toDataURL('image/jpeg');
-
-                // Divisez l'image en plusieurs pièces de puzzle
-                divideImageIntoPuzzlePieces(imageData);
-            })
-            .catch((error) => {
-                console.error('Error accessing media devices.', error);
-            });
+        const canvas = document.createElement('canvas');
+        canvas.width = videoElement.width;
+        canvas.height = videoElement.height;
+        const context = canvas.getContext('2d');
+        context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+        const imageData = canvas.toDataURL('image/jpeg');
+    
+        // Divisez l'image en plusieurs pièces de puzzle
+        divideImageIntoPuzzlePieces(imageData);
     });
+
+// Check if the browser supports media devices
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Get the user's media stream with video enabled
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
+        .then((stream) => {
+            // Set the video element's source to the user's media stream
+            videoElement.srcObject = stream;
+        })
+        .catch((error) => {
+            console.error('Error accessing media devices.', error);
+        });
+} else {
+    console.error('getUserMedia is not supported in this browser.');
+}
 });
