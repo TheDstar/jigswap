@@ -4,6 +4,8 @@ body {
     background-color: #333;
     color: #fff;
     font-family: Arial, sans-serif;
+    overflow: hidden;
+    touch-action: none;
 }
 
 .container {
@@ -49,6 +51,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: scroll;
 }
 
 .puzzle-piece-image {
