@@ -22,3 +22,44 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     console.error('getUserMedia is not supported in this browser.');
 }
 };
+
+function divideImageIntoPuzzlePieces(imageData) {
+    const puzzlePieces = [];
+    const img = new Image();
+    img.src = imageData;
+    img.onload = () => {
+        const pieceWidth = img.width / 4;
+        const pieceHeight = img.height / 4;
+
+        for (let y = 0; y < 4; y++) {
+            for (let x = 0; x < 4; x++) {
+                const canvas = document.createElement('canvas');
+                canvas.width = pieceWidth;
+                canvas.height = pieceHeight;
+                const context = canvas.getContext('2d');
+                context.drawImage(img, x * pieceWidth, y * pieceHeight, pieceWidth, pieceHeight, 0, 0, pieceWidth, pieceHeight);
+                puzzlePieces.push(canvas.toDataURL('image/jpeg'));
+            }
+        }
+
+        // Enregistrez les pièces de puzzle dans le stockage local ou envoyez-les au serveur
+        localStorage.setItem('puzzlePieces', JSON.stringify(puzzlePieces));
+
+        // Redirigez l'utilisateur vers la page puzzle.html
+        window.location.href = 'puzzle.html';
+    };
+}
+
+const takePhotoButton = document.querySelector('#take-photo-button');
+
+takePhotoButton.addEventListener('click', () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = videoElement.width;
+    canvas.height = videoElement.height;
+    const context = canvas.getContext('2d');
+    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+    const imageData = canvas.toDataURL('image/jpeg');
+
+    // Divisez l'image en plusieurs pièces de puzzle
+    divideImageIntoPuzzlePieces(imageData);
+});

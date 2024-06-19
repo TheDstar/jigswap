@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Puzzle</title>
+    <style>
+        #puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+
+        .puzzle-piece {
+            width: 100%;
+            height: auto;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <h2>Reconstituez le puzzle !</h2>
+    <div id="puzzle-container"></div>
+
+    <script>
+        const puzzleContainer = document.getElementById('puzzle-container');
+        const puzzlePieces = JSON.parse(localStorage.getItem('puzzlePieces'));
+
+        puzzlePieces.forEach(piece => {
+            const img = document.createElement('img');
+            img.src = piece;
+            img.classList.add('puzzle-piece');
+            puzzleContainer.appendChild(img);
+
+            // Ajoutez des gestionnaires d'événements pour permettre le déplacement des pièces
+            img.addEventListener('mousedown', dragStart);
+            img.addEventListener('mouseup', dragEnd);
+        });
+
+        let isDragging = false;
+        let currentPiece = null;
+
+        function dragStart(e) {
+            isDragging = true;
+            currentPiece = e.target;
+        }
+
+        function dragEnd(e) {
+            isDragging = false;
+            currentPiece = null;
+        }
+
+        document.addEventListener('mousemove', drag);
+
+        function drag(e) {
+            if (isDragging && currentPiece) {
+                currentPiece.style.position = 'absolute';
+                currentPiece.style.left = `${e.clientX - currentPiece.offsetWidth / 2}px`;
+                currentPiece.style.top = `${e.clientY - currentPiece.offsetHeight / 2}px`;
+            }
+        }
+    </script>
+</body>
+</html>
