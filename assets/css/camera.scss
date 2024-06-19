@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    h2 {
+        color: white;
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 1rem;
+    }
+
+    video {
+        width: 90%;
+        height: auto;
+        border-radius: 1rem;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+}

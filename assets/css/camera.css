@@ -1,0 +1,18 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+body h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 1rem;
+}
+body video {
+  width: 90%;
+  height: auto;
+  border-radius: 1rem;
+  transform: scaleX(-1);
+}/*# sourceMappingURL=camera.css.map */
