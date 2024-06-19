@@ -53,6 +53,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow-x: scroll;
+  pointer-events: visible;
 }
 .puzzle-piece-container .puzzle-piece-image {
   max-width: 100%;
