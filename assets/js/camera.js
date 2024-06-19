@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         img.onload = () => {
             const pieceWidth = img.width / 4;
             const pieceHeight = img.height / 4;
+            console.log('Image loaded');
 
             for (let y = 0; y < 4; y++) {
                 for (let x = 0; x < 4; x++) {
