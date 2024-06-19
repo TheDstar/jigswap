@@ -31,21 +31,27 @@ for (let i = 0; i < 16; i++) {
 }
 
 // Créer les pièces de puzzle à partir des données stockées
+// Créer les pièces de puzzle à partir des données stockées
 puzzlePieces.forEach(piece => {
     const pieceContainer = createPuzzlePieceContainer(piece);
     piecesContainer.appendChild(pieceContainer);
 
     // Ajoutez des gestionnaires d'événements pour permettre le déplacement des pièces
-    pieceContainer.addEventListener('mousedown', dragStart);
-    pieceContainer.addEventListener('mouseup', dragEnd);
+    pieceContainer.addEventListener('touchstart', dragStart, { passive: true });
+    pieceContainer.addEventListener('touchend', dragEnd);
+    pieceContainer.addEventListener('touchmove', drag, { passive: true });
 });
 
 let isDragging = false;
 let currentPiece = null;
+let currentX;
+let currentY;
 
 function dragStart(e) {
     isDragging = true;
     currentPiece = e.target.parentNode;
+    currentX = e.touches[0].clientX - currentPiece.offsetLeft;
+    currentY = e.touches[0].clientY - currentPiece.offsetTop;
 }
 
 function dragEnd(e) {
@@ -53,12 +59,63 @@ function dragEnd(e) {
     currentPiece = null;
 }
 
-document.addEventListener('mousemove', drag);
-
 function drag(e) {
     if (isDragging && currentPiece) {
+        e.preventDefault();
         currentPiece.style.position = 'absolute';
-        currentPiece.style.left = `${e.clientX - currentPiece.offsetWidth / 2}px`;
-        currentPiece.style.top = `${e.clientY - currentPiece.offsetHeight / 2}px`;
+        currentPiece.style.left = `${e.touches[0].clientX - currentX}px`;
+        currentPiece.style.top = `${e.touches[0].clientY - currentY}px`;
+
+        if (isPuzzleCompleted()) {
+            stopTimer();
+            window.location.href = 'success.html';
+        }
     }
+}
+
+const timerElement = document.querySelector('.timer');
+let timerInterval;
+let startTime;
+
+function startTimer() {
+    startTime = new Date().getTime();
+    timerInterval = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+    const currentTime = new Date().getTime();
+    const elapsedTime = currentTime - startTime;
+    const minutes = Math.floor(elapsedTime / (1000 * 60));
+    const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+    timerElement.textContent = `${padZero(minutes)}:${padZero(seconds)}`;
+}
+
+function padZero(value) {
+    return value.toString().padStart(2, '0');
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+function isPuzzleCompleted() {
+    const puzzlePieces = Array.from(puzzleContainer.children);
+    const sortedPieces = puzzlePieces.slice().sort((a, b) => {
+        return a.style.left.split('px')[0] - b.style.left.split('px')[0];
+    });
+
+    for (let i = 0; i < sortedPieces.length; i++) {
+        const piece = sortedPieces[i];
+        const expectedLeft = (i % 4) * (puzzleContainer.offsetWidth / 4);
+        const expectedTop = Math.floor(i / 4) * (puzzleContainer.offsetHeight / 4);
+
+        if (
+            parseInt(piece.style.left.split('px')[0], 10) !== expectedLeft ||
+            parseInt(piece.style.top.split('px')[0], 10) !== expectedTop
+        ) {
+            return false;
+        }
+    }
+
+    return true;
 }
