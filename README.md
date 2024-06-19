@@ -10,18 +10,18 @@ Le nom "Jigswap" est une combinaison de deux mots anglais : "Jigsaw" (puzzle) et
 Jigswap est une application ludique sous forme de PWA. Le concept est simple : les utilisateurs peuvent créer et résoudre des puzzles à partir de leurs propres photos. 
 
 ## Fonctionnalités principales
-**Prise de photo**
+**Prise de photo :**
 L'utilisateur installe la PWA sur son téléphone.
 Sur la page d'accueil, il clique sur un bouton pour prendre une photo.
 Une autorisation d'utiliser l'appareil photo est demandée. L'utilisateur peut choisir d'autoriser ou de refuser.
 Une fois autorisé, l'utilisateur se prend en photo.
 
-**Création et résolution du puzzle**
+**Création et résolution du puzzle :**
 La photo prise est décomposée en plusieurs morceaux.
 L'utilisateur doit reconstituer le puzzle le plus rapidement possible.
 Le temps est chronométré pour ajouter une dimension compétitive.
 
-**Partage et historique**
+**Partage et historique :**
 Après avoir complété le puzzle, l'utilisateur est félicité.
 Il a la possibilité de partager sa photo et son temps de résolution sur d'autres applications.
 Un historique est présent sur l'écran d'accueil pour que l'utilisateur garde une trace de ses anciens jeux.
