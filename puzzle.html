@@ -1,62 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Puzzle</title>
-    <style>
-        #puzzle-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 10px;
-        }
-
-        .puzzle-piece {
-            width: 100%;
-            height: auto;
-            cursor: move;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Puzzle - Jigswap</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/puzzle.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Reconstituez le puzzle !</h2>
-    <div id="puzzle-container"></div>
+    <div class="container">
+        <div class="timer">00:00</div>
+        <div id="puzzle-container" class="puzzle-grid"></div>
+        <div class="pieces-container">
+            <!-- Les pièces de puzzle seront insérées ici -->
+        </div>
+    </div>
 
-    <script>
-        const puzzleContainer = document.getElementById('puzzle-container');
-        const puzzlePieces = JSON.parse(localStorage.getItem('puzzlePieces'));
-
-        puzzlePieces.forEach(piece => {
-            const img = document.createElement('img');
-            img.src = piece;
-            img.classList.add('puzzle-piece');
-            puzzleContainer.appendChild(img);
-
-            // Ajoutez des gestionnaires d'événements pour permettre le déplacement des pièces
-            img.addEventListener('mousedown', dragStart);
-            img.addEventListener('mouseup', dragEnd);
-        });
-
-        let isDragging = false;
-        let currentPiece = null;
-
-        function dragStart(e) {
-            isDragging = true;
-            currentPiece = e.target;
-        }
-
-        function dragEnd(e) {
-            isDragging = false;
-            currentPiece = null;
-        }
-
-        document.addEventListener('mousemove', drag);
-
-        function drag(e) {
-            if (isDragging && currentPiece) {
-                currentPiece.style.position = 'absolute';
-                currentPiece.style.left = `${e.clientX - currentPiece.offsetWidth / 2}px`;
-                currentPiece.style.top = `${e.clientY - currentPiece.offsetHeight / 2}px`;
-            }
-        }
-    </script>
+    <script src="assets/js/puzzle.js"></script>
 </body>
 </html>
