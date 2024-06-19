@@ -1,8 +1,15 @@
 const puzzleContainer = document.querySelector('.puzzle-grid');
 const piecesContainer = document.querySelector('.pieces-container');
+const timerElement = document.querySelector('.timer');
 const puzzlePieces = JSON.parse(localStorage.getItem('puzzlePieces'));
 
-// Fonction pour créer un élément de pièce de puzzle
+let isDragging = false;
+let currentPiece = null;
+let currentX;
+let currentY;
+let timerInterval;
+let startTime;
+
 function createPuzzlePiece(src) {
     const piece = document.createElement('div');
     piece.classList.add('puzzle-piece');
@@ -13,7 +20,6 @@ function createPuzzlePiece(src) {
     return piece;
 }
 
-// Fonction pour créer un conteneur de pièce de puzzle
 function createPuzzlePieceContainer(src) {
     const container = document.createElement('div');
     container.classList.add('puzzle-piece-container');
@@ -24,19 +30,15 @@ function createPuzzlePieceContainer(src) {
     return container;
 }
 
-// Remplir la grille de puzzle avec des pièces vides
 for (let i = 0; i < 16; i++) {
     const piece = createPuzzlePiece();
     puzzleContainer.appendChild(piece);
 }
 
-// Créer les pièces de puzzle à partir des données stockées
-// Créer les pièces de puzzle à partir des données stockées
 puzzlePieces.forEach(piece => {
     const pieceContainer = createPuzzlePieceContainer(piece);
     piecesContainer.appendChild(pieceContainer);
 
-    // Ajoutez des gestionnaires d'événements pour permettre le déplacement des pièces
     pieceContainer.addEventListener('touchstart', dragStart, { passive: true });
     pieceContainer.addEventListener('touchend', dragEnd);
     pieceContainer.addEventListener('touchmove', drag, { passive: true });
@@ -44,7 +46,7 @@ puzzlePieces.forEach(piece => {
     pieceContainer.addEventListener('mousedown', dragStart);
     pieceContainer.addEventListener('mouseup', dragEnd);
     document.addEventListener('mousemove', drag);
-    document.addEventListener('mouseleave', dragEnd); // Ajoutez cet événement pour gérer le cas où la souris quitte la fenêtre
+    document.addEventListener('mouseleave', dragEnd);
 });
 
 function dragStart(e) {
@@ -85,9 +87,27 @@ function drag(e) {
     }
 }
 
-const timerElement = document.querySelector('.timer');
-let timerInterval;
-let startTime;
+function isPuzzleCompleted() {
+    const puzzlePieces = Array.from(puzzleContainer.children);
+    const sortedPieces = puzzlePieces.slice().sort((a, b) => {
+        return a.style.left.split('px')[0] - b.style.left.split('px')[0];
+    });
+
+    for (let i = 0; i < sortedPieces.length; i++) {
+        const piece = sortedPieces[i];
+        const expectedLeft = (i % 4) * (puzzleContainer.offsetWidth / 4);
+        const expectedTop = Math.floor(i / 4) * (puzzleContainer.offsetHeight / 4);
+
+        if (
+            parseInt(piece.style.left.split('px')[0], 10) !== expectedLeft ||
+            parseInt(piece.style.top.split('px')[0], 10) !== expectedTop
+        ) {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 function startTimer() {
     startTime = new Date().getTime();
@@ -110,24 +130,4 @@ function stopTimer() {
     clearInterval(timerInterval);
 }
 
-function isPuzzleCompleted() {
-    const puzzlePieces = Array.from(puzzleContainer.children);
-    const sortedPieces = puzzlePieces.slice().sort((a, b) => {
-        return a.style.left.split('px')[0] - b.style.left.split('px')[0];
-    });
-
-    for (let i = 0; i < sortedPieces.length; i++) {
-        const piece = sortedPieces[i];
-        const expectedLeft = (i % 4) * (puzzleContainer.offsetWidth / 4);
-        const expectedTop = Math.floor(i / 4) * (puzzleContainer.offsetHeight / 4);
-
-        if (
-            parseInt(piece.style.left.split('px')[0], 10) !== expectedLeft ||
-            parseInt(piece.style.top.split('px')[0], 10) !== expectedTop
-        ) {
-            return false;
-        }
-    }
-
-    return true;
-}
+startTimer();

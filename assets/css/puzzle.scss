@@ -52,6 +52,10 @@ body {
     justify-content: center;
     align-items: center;
     overflow-x: scroll;
+
+    .puzzle-piece-image {
+        pointer-events: none;
+    }
 }
 
 .puzzle-piece-image {
