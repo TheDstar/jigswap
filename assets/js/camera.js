@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const takePhotoButton = document.querySelector('#take-photo-button');
 
+    if(takePhotoButton) {
+        console.log('Button found');
+    }
+
     function divideImageIntoPuzzlePieces(imageData) {
         const puzzlePieces = [];
         const img = new Image();
