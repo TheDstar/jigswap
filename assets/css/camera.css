@@ -16,7 +16,6 @@ body video {
   width: 90%;
   height: auto;
   border-radius: 1rem;
-  transform: scaleX(-1);
 }
 body button {
   padding: 1rem;
