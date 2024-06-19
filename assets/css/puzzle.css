@@ -55,6 +55,7 @@ body {
   justify-content: center;
   align-items: center;
   cursor: move;
+  padding-left: 1rem;
 }
 
 .puzzle-piece-image {
