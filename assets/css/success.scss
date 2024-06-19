@@ -7,4 +7,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+
+    .share-button {
+        background-color: var(--jigswap-yellow);
+        color: var(--jigswap-gray);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-top: 1rem;
+    }
 }
